@@ -16,3 +16,10 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         response = {'message': 'POST received', 'data': post_data.decode()}
         self.wfile.write(json.dumps(response).encode())
+
+if __name__ == '__main__':
+    PORT = 8000
+    server_address = ('', PORT)
+    httpd = HTTPServer(server_address, handler)
+    print(f'Server running on port {PORT}')
+    httpd.serve_forever()

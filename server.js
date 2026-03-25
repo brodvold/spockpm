@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 3000;
+const PUBLIC_DIR = path.join(__dirname, 'public');
 
 const server = http.createServer((req, res) => {
     // Set CORS headers
@@ -19,7 +20,8 @@ const server = http.createServer((req, res) => {
 
     // Serve index.html for root path
     if (req.url === '/' || req.url === '/index.html') {
-        fs.readFile(path.join(__dirname, 'index.html'), (err, data) => {
+        const filePath = path.join(PUBLIC_DIR, 'index.html');
+        fs.readFile(filePath, (err, data) => {
             if (err) {
                 res.writeHead(500);
                 return res.end('Error loading index.html');
@@ -38,9 +40,9 @@ const server = http.createServer((req, res) => {
             note: 'For full local development, run: python api/hello.py in one terminal, and node server.js in another.'
         }));
     }
-    // Serve static files
+    // Serve static files from public directory
     else {
-        const filePath = path.join(__dirname, req.url);
+        const filePath = path.join(PUBLIC_DIR, req.url);
         fs.access(filePath, fs.constants.F_OK, (err) => {
             if (err) {
                 res.writeHead(404);
