@@ -3,5 +3,12 @@
     "api/hello.py": {
       "runtime": "python"
     }
-  }
+  },
+  "outputDirectory": "public",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/hello.py"
+    }
+  ]
 }
