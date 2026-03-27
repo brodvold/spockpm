@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/hello.py": {
-      "runtime": "python@3.9"
-    }
-  },
   "outputDirectory": "public",
   "routes": [
     {
