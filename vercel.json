@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/hello.py": {
-      "runtime": "python"
+      "runtime": "python3.9"
     }
   },
   "outputDirectory": "public",
